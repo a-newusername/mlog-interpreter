@@ -1,0 +1,8 @@
+#strict
+set num 0
+op + num 1 num
+jump 5 always
+print uh oh malfunction moment
+print num
+printflush
+end
