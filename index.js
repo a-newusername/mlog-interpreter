@@ -37,11 +37,12 @@ for (let line = 0;line<=999999;line++) {
 				break;
 			}
 
-			let [io, targetl, mop, n1, n2] = args;
+			let [_, target, op, n1, n2] = args;
+			
 			let v1 = vars.get(n1) ?? (n1 ?? 0);
 			let v2 = vars.get(n2) ?? (n2 ?? 0);
-			if (eval(`${v1} ${nop} ${v2}`)) {
-				line = --targetl
+			if (eval(`${v1} ${op} ${v2}`)) {
+				line = --target
 			}
 			break;
 
@@ -59,10 +60,11 @@ for (let line = 0;line<=999999;line++) {
 			break;
 
 		case "op":
-			let [i, op, target, name1, name2] = args;
+			let [i, mop, vart, name1, name2] = args;
+			
 			let var1 = vars.get(name1) ?? (name1 ?? 0);
 			let var2 = vars.get(name2) ?? (name2 ?? 0);
-			vars.set(target, eval(`${var1} ${mop} ${var2}`));
+			vars.set(vart, eval(`${var1} ${mop} ${var2}`));
 			break;
 			
 		default:
