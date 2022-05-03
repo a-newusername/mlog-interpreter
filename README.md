@@ -1,6 +1,8 @@
 # Mindustry Interpreter
 this is an interpreter of mlog using an interpreted language
 
+###### keep in mind that you need to convert "not" or whatever to the "programming" (i lack better words) counter part like "not" with != (same thing the other way around)
+
 ## Avaliable Instructions
 -`print text`<br/>
 -`printflush`<br/>
