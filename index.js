@@ -28,12 +28,20 @@ for (let line = 0;line<=999999;line++) {
 				vars.set("print", vars.get(args[1]));
 				break;
 			}
-			vars.set("print", args.slice(1).join(" "))
+			vars.set("print", (vars.get("print") + args.slice(1).join(" ")))
 			break;
 
 		case "jump":
 			if (args[2] == "always") {
 				line = --args[1]
+				break;
+			}
+
+			let [io, targetl, mop, n1, n2] = args;
+			let v1 = vars.get(n1) ?? (n1 ?? 0);
+			let v2 = vars.get(n2) ?? (n2 ?? 0);
+			if (eval(`${v1} ${nop} ${v2}`)) {
+				line = --targetl
 			}
 			break;
 
@@ -51,10 +59,10 @@ for (let line = 0;line<=999999;line++) {
 			break;
 
 		case "op":
-			const [_, op, target, name1, name2] = args;
-			const var1 = vars.get(name1) ?? (name1 ?? 0);
-			const var2 = vars.get(name2) ?? (name2 ?? 0);
-			vars.set(target, eval(`${var1} ${op} ${var2}`));
+			let [i, op, target, name1, name2] = args;
+			let var1 = vars.get(name1) ?? (name1 ?? 0);
+			let var2 = vars.get(name2) ?? (name2 ?? 0);
+			vars.set(target, eval(`${var1} ${mop} ${var2}`));
 			break;
 			
 		default:
@@ -66,5 +74,8 @@ for (let line = 0;line<=999999;line++) {
 	if (end) {
 		console.log("[SYSTEM] Script ended")
 		break;
+	}
+	if (line == 999999) {
+		console.log("[SYSTEM] You have exceeded the recomended amount of lines! Maybe don't use this interpreter for a project that big or just make another script for other processors to help the main processor since 999999 is A LOT of instructions.")
 	}
 }

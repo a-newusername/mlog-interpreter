@@ -1,7 +1,7 @@
 #strict
 set num 0
 op + num 1 num
-jump 5 always
+jump 5 == num 1
 print uh oh malfunction moment
 print num
 printflush
