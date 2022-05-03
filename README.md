@@ -9,7 +9,7 @@ this is an interpreter of mlog using an interpreted language
 -`end`<br/>
 -`jump line operator x false`
 
-###### Operators: always will add support any JS operator later<br>Math operators: any JS math operator
+###### Operators: always and any JS operator later<br>Math operators: any JS math operator
 
 ## Special instructions
 **These instructions are not in vanila mlog** but these instructions are still added to configure the behavior of the interpreter
